@@ -1,0 +1,23 @@
+.main_body {
+    min-height: 500px;
+    border-radius: 0px;
+    background: #cdc1c1;
+    box-shadow: inset 30px 30px 93px #968d8d,
+                inset -30px -30px 93px #fff5f5;
+    }
+  
+    .reverse_title{
+      position: absolute;
+      left: 50%;
+      margin-left: -50px;
+      padding-top: 300px;
+      color: black;
+    }
+  
+    .front_title{
+      position: absolute;
+      padding-top: 130px;
+      left: 50%;
+      margin-left: -60px;
+      color: black;
+    }
