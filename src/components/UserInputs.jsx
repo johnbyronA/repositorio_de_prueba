@@ -1,25 +1,53 @@
 
-import Card from "../ReusableComponents/Card"
+//import Card from "../ReusableComponents/Card"
 import Button from "../ReusableComponents/Button"
 import "./UserInputs.css"
-//import React,{useState} from "react"
+import React,{useState} from "react"
 
-const UserInputs = () => {
+const UserInputs = (props) => {
+
+  const [enteredUsername, setEnteredUsername] = useState("");
+  const [enteredAge, setEnteredAge] = useState("");
+
+  const addUserHandler = (event) => {
+    event.preventDefault()
+
+    if (enteredUsername.trim().length ===0 || enteredAge.trim().length===0){
+      return;
+    }
+    if (enteredAge < 1){
+      return;
+    }
+
+    props.onAddUser(enteredUsername,enteredAge);
+    setEnteredUsername("");
+    setEnteredAge("");
+  }
   
+  const usernameChangeHandler= (event) => {
+    setEnteredUsername(event.target.value)
+  }
+
+  const ageChangeHandler= (event) => {
+    setEnteredAge(event.target.value)
+  }
+
+ 
+
     return (
+
+    
+      <form className="input" onSubmit={addUserHandler}>
+        <label htmlFor="username">Front</label>
+        <input type="text" value={enteredUsername} onChange={usernameChangeHandler} id="username" />
   
-    <Card>
-      <form className="input">
-        <label htmlFor="Front">Username</label>
-        <input type="text" name="" id="text" />
+        <label htmlFor="age">Reverse</label>
+        <input type="text" value= {enteredAge} onChange={ageChangeHandler} id="text" />
   
-        <label htmlFor="Reverse">Email</label>
-        <input type="text" name="" id="text" />
-  
-        <Button type="submit">Save</Button>
-        <Button type="submit">Change Password</Button>
+        <Button type="submit">Add</Button>
+        
       </form>
-    </Card>
+  
     )
   }
   
